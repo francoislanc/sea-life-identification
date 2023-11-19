@@ -2,8 +2,8 @@
 
 ## Website
 
-[![website-screenshot](website/docs/website-screenshot.png)](./website/README.md)
+[![website-screenshot](website/docs/website-screenshot.png)](./website)
 
 ## Sea Life IDentification app
 
-[![sea-life-id-screenshot](sea-life-id-app/docs/identify-tab-screenshot.png)](./sea-life-id-app/README.md)
+[![sea-life-id-screenshot](sea-life-id-app/docs/identify-tab-screenshot.png)](./sea-life-id-app)
