@@ -1,3 +1,7 @@
+<script lang="ts">
+	import Github from "~icons/mdi/github";
+</script>
+
 <svelte:head>
 	<title>Scuba Diving Companion</title>
 </svelte:head>
@@ -6,10 +10,10 @@
 		<div class="space-y-10 text-center flex items-center">
 			<div class="card p-8 max-w-2xl">
 				<header>
-					<img src="/app_screenshot.png" class="rounded-md w-3/4 mx-auto" alt="sea-life-id app" />
+					<h3 class="h3" data-toc-ignore>Sea Life IDentification App</h3>
+					<img src="/sea-life-id-screenshot-identify.png" class="pt-4 rounded-md w-3/4 mx-auto" alt="sea-life-id app" />
 				</header>
 				<div class="p-4 space-y-4">
-					<h3 class="h3" data-toc-ignore>Sea Life IDentification</h3>
 					<article>
 						<p class="text-center mx-6">
 							After your dive, automatically identify marine life from your underwater photos and
@@ -31,6 +35,8 @@
 								/></a
 							>
 						</p>
+						<a target="_blank" href="https://github.com/francoislanc/sea-life-identification" class="btn-icon variant-soft-secondary"><Github /></a>
+
 					</div>
 				</footer>
 			</div>

@@ -1,9 +1,9 @@
-# Scuba Diving Companion
+## Sea Life IDentification
 
-## Website
+After your dive, automatically identify marine life from your underwater photos and videos.
+The processing is performed locally on the device.
+More than 50 categories : diver, wreck, jellyfish, grouper, ...
 
-[![website-screenshot](website/docs/website-screenshot.png)](./website)
+You can also report a detection problem from the app to help us improving our automatic tagging.
 
-## Sea Life IDentification app
-
-[![sea-life-id-screenshot](sea-life-id-app/docs/identify-tab-screenshot.png)](./sea-life-id-app)
+![website-screenshot](sea-life-id-app/docs/sea-life-id-screenshot-identify.png)
