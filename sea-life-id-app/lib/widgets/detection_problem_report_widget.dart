@@ -57,8 +57,8 @@ class _DetectionProblemReportState extends State<DetectionProblemReport> {
         AppLocalizations.of(context)!.translate('detection_problem_report_ok'),
         style: TextStyle(color: Colors.white),
       ),
-      onOkButtonPressed: () {
-        FirebaseStorageUtils.uploadMedia(
+      onOkButtonPressed: () async {
+        await FirebaseStorageUtils.uploadMedia(
             storageFolderName, '0', File(widget.media.path), myController.text);
         Navigator.of(context).pop();
 

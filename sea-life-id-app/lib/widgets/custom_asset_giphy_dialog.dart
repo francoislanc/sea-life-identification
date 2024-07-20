@@ -141,6 +141,9 @@ class AssetPortraitMode extends StatelessWidget {
               children: <Widget>[
                 !onlyOkButton
                     ? ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll(Colors.lightBlue)),
                         onPressed: () => Navigator.of(context).pop(),
                         child: buttonCancelText ??
                             Text(
@@ -150,6 +153,9 @@ class AssetPortraitMode extends StatelessWidget {
                       )
                     : Container(),
                 ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Colors.lightBlue)),
                   onPressed: onOkButtonPressed ?? () {},
                   child: buttonOkText ??
                       Text(

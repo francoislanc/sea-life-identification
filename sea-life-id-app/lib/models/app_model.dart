@@ -126,7 +126,7 @@ abstract class AppModelBase with Store {
     });
 
     reaction((_) => userMedias.length, (userMediasLength) async {
-      if (userMediasLength is int && userMediasLength > 0) {
+      if (userMediasLength > 0) {
         MediaModel m = userMedias.last;
         if (!m.hasBeenProcessed) {
           await m.createThumbnail();

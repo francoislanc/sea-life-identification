@@ -66,21 +66,20 @@ class IsolateInference {
       // Set tensor input [1, 224, 224, 3]
       final input = [imageMatrix];
       // Set tensor output [1, 70]
-      final output = [List<int>.filled(isolateModel.outputShape[1], 0)];
+      final output = [List<double>.filled(isolateModel.outputShape[1], 0)];
       // // Run inference
       Interpreter interpreter =
           Interpreter.fromAddress(isolateModel.interpreterAddress);
       interpreter.run(input, output);
       // Get first output tensor
       final result = output.first;
-      int maxScore = 255; //result.reduce((a, b) => a + b);
+      // int maxScore = 255; //result.reduce((a, b) => a + b);
       // Set classification map {label: points}
       var classification = <String, double>{};
       for (var i = 0; i < result.length; i++) {
         if (result[i] != 0) {
           // Set label: points
-          classification[isolateModel.labels[i]] =
-              result[i].toDouble() / maxScore.toDouble();
+          classification[isolateModel.labels[i]] = result[i].toDouble();
         }
       }
       isolateModel.responsePort.send(classification);

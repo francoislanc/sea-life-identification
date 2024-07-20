@@ -5,10 +5,10 @@ import 'package:path_provider/path_provider.dart';
 import 'package:underwater_video_tagging/utils/tflite_interpreter.dart';
 
 class AutomaticTagging {
-  static String model = "model-2.tflite";
-  static String modelLabels = "model-2.txt";
-  static String modelVersion = "v2.1";
-  static double confidence = 0.45;
+  static String model = "model-3.tflite";
+  static String modelLabels = "model-3.txt";
+  static String modelVersion = "v3.1";
+  static double confidence = 0.40;
 
   static TfLiteInterpreter? _imageLabeler;
 

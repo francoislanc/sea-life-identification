@@ -84,6 +84,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         appBar: AppBar(
             automaticallyImplyLeading: false,
             systemOverlayStyle: SystemUiOverlayStyle.light,
+            backgroundColor: Colors.lightBlue,
             elevation: 0,
             titleSpacing: 0,
             flexibleSpace: MyAppBar(
@@ -95,8 +96,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: [
-              Discover(appStore: widget.appStore),
               Identify(appStore: widget.appStore),
+              Discover(appStore: widget.appStore),
             ],
           ),
         ));

@@ -25,6 +25,7 @@ class Identify extends StatelessWidget {
           return usageWidget(context);
         } else {
           return MasonryGridView.count(
+              padding: const EdgeInsets.only(bottom: 64.0),
               itemCount: appStore.userMedias.length,
               crossAxisCount: MediaQuery.of(context).size.width < 400
                   ? 1

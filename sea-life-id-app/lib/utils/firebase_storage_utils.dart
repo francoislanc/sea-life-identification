@@ -48,7 +48,7 @@ class FirebaseStorageUtils {
   static Future<bool> hasLatestModel() async {
     bool hasLatestModel = false;
     FullMetadata metadata =
-        await _firebaseStorage.ref('models/model-2.tflite').getMetadata();
+        await _firebaseStorage.ref('models/model-3.tflite').getMetadata();
     String? firebaseMd5Value = metadata.md5Hash;
     Directory appDocDir = await getApplicationDocumentsDirectory();
     File modelFile = File('${appDocDir.path}/model.tflite');
@@ -65,19 +65,19 @@ class FirebaseStorageUtils {
     Directory appDocDir = await getApplicationDocumentsDirectory();
     File downloadToModelFile = File('${appDocDir.path}/model.tflite');
     await _firebaseStorage
-        .ref('models/model-2.tflite')
+        .ref('models/model-3.tflite')
         .writeToFile(downloadToModelFile);
     File downloadToModelDicFile = File('${appDocDir.path}/model.txt');
     await _firebaseStorage
-        .ref('models/model-2.txt')
+        .ref('models/model-3.txt')
         .writeToFile(downloadToModelDicFile);
   }
 
   static Future<bool> initModel() async {
     bool init = false;
     var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult.contains(ConnectivityResult.mobile) ||
+        connectivityResult.contains(ConnectivityResult.wifi)) {
       bool hasLatestModel = await FirebaseStorageUtils.hasLatestModel();
       if (!hasLatestModel) {
         await downloadModel();

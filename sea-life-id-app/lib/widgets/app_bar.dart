@@ -50,6 +50,7 @@ class _MyAppBarState extends State<MyAppBar> {
                     splashColor: Colors.transparent,
                   ),
                   child: TabBar(
+                    dividerColor: Colors.transparent,
                     indicator: BorderTabIndicator(
                       indicatorHeight: 32,
                       textScaleFactor: 1,
@@ -67,12 +68,16 @@ class _MyAppBarState extends State<MyAppBar> {
                       duration: const Duration(milliseconds: 300),
                     ),
                     tabs: [
-                      Tab(
-                          text: AppLocalizations.of(context)!
-                              .translate('discover_tab')),
-                      Tab(
-                          text: AppLocalizations.of(context)!
-                              .translate('identify_tab')),
+                      Container(
+                          width: 100.0,
+                          child: Tab(
+                              text: AppLocalizations.of(context)!
+                                  .translate('identify_tab'))),
+                      Container(
+                          width: 100.0,
+                          child: Tab(
+                              text: AppLocalizations.of(context)!
+                                  .translate('discover_tab'))),
                     ],
                   ),
                 ),
