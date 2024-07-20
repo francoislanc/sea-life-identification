@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "sea-life-id-fine-tuning"
+version = "0.1.0"
+description = "Fine-tune image classification model for marine life"
+authors = ["Francois Lancelot <16709438+francoislanc@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+keras = "^3.4.1"
+scikit-learn = "^1.5.1"
+iterative-stratification = "^0.1.7"
+transformers = "^4.42.4"
+datasets = "^2.20.0"
+renumics-spotlight = "^1.6.10"
+cleanlab = "^2.6.6"
+fire = "^0.6.0"
+pydantic-settings = "^2.3.4"
+tensorflow = "2.16.1"
+torch = "^2.3.1"
+accelerate = "^0.32.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+ruff = "^0.5.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+sea-life-id-finetuning-cli = "sea_life_id_fine_tuning.main:run"
