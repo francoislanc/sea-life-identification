@@ -1,7 +1,7 @@
 name: underwater_video_tagging
 description: Marine Life Identifier
 publish_to: 'none'
-version: 0.4.2+20
+version: 0.4.3+21
 
 environment:
   sdk: ^3.4.0
