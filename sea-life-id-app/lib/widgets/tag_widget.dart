@@ -30,9 +30,9 @@ class TagWidget extends StatelessWidget {
                   final item = media.uiTags[index];
                   return ColoredTag(
                       tagIndex: index,
-                      tagKey: item.title,
+                      tagKey: item.title.replaceAll(" ", ""),
                       tagValue: AppLocalizations.of(context)!
-                          .translate('tag_${item.title}'));
+                          .translate('tag_${item.title.replaceAll(" ", "")}'));
                 },
               ));
         }
