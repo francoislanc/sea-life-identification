@@ -3,16 +3,16 @@
 </svelte:head>
 <div class="h-full">
 	<div class="container p-8 mx-auto">
-		<h4 class="h4 py-4">Privacy Policy</h4>
-		<p>The Sea Life ID App can identify sea life from your photos and videos.</p>
+		<h3 class="h3 py-4">Privacy Policy</h3>
+		<p>The <span class="code">Sea Life ID App</span> can identify sea life from your photos and videos.</p>
 
 		<h4 class="h4 py-4">Information We May Collect From You</h4>
 		<p>
-			By default, the Sea Life ID App does not collect data from you. The processing is performed
+			By default, the <span class="code">Sea Life ID App</span> does not collect data from you. The processing is performed
 			locally on the device.
 		</p>
 		<p>
-			However, we may collect information you provide directly to us. In the Sea Life ID App, you
+			However, we may collect information you provide directly to us. In the <span class="code">Sea Life ID App</span>, you
 			can report a detection problem for an image or video from the App. The reported images and
 			videos will be collected.
 		</p>
@@ -27,7 +27,7 @@
 		<p>We do not sell, lease, rent or disclose the collected data.</p>
 
 		<h4 class="h4 py-4">Contact</h4>
-		<p>scubadivingcompanion@gmail.com</p>
+		<p><span class="code">scubadivingcompanion@gmail.com</span></p>
 	</div>
 </div>
 
