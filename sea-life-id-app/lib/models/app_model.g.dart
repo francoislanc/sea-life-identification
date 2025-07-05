@@ -14,12 +14,14 @@ mixin _$AppModel on AppModelBase, Store {
   @override
   ObservableList<MediaModel> get selectedGalleryMedias =>
       (_$selectedGalleryMediasComputed ??= Computed<ObservableList<MediaModel>>(
-              () => super.selectedGalleryMedias,
-              name: 'AppModelBase.selectedGalleryMedias'))
-          .value;
+        () => super.selectedGalleryMedias,
+        name: 'AppModelBase.selectedGalleryMedias',
+      )).value;
 
-  late final _$userMediasAtom =
-      Atom(name: 'AppModelBase.userMedias', context: context);
+  late final _$userMediasAtom = Atom(
+    name: 'AppModelBase.userMedias',
+    context: context,
+  );
 
   @override
   ObservableList<MediaModel> get userMedias {
@@ -34,8 +36,10 @@ mixin _$AppModel on AppModelBase, Store {
     });
   }
 
-  late final _$galleryMediasAtom =
-      Atom(name: 'AppModelBase.galleryMedias', context: context);
+  late final _$galleryMediasAtom = Atom(
+    name: 'AppModelBase.galleryMedias',
+    context: context,
+  );
 
   @override
   ObservableList<MediaModel> get galleryMedias {
@@ -50,8 +54,10 @@ mixin _$AppModel on AppModelBase, Store {
     });
   }
 
-  late final _$selectedTagsAtom =
-      Atom(name: 'AppModelBase.selectedTags', context: context);
+  late final _$selectedTagsAtom = Atom(
+    name: 'AppModelBase.selectedTags',
+    context: context,
+  );
 
   @override
   ObservableList<String> get selectedTags {
@@ -66,8 +72,10 @@ mixin _$AppModel on AppModelBase, Store {
     });
   }
 
-  late final _$galleryElementsNumberAtom =
-      Atom(name: 'AppModelBase.galleryElementsNumber', context: context);
+  late final _$galleryElementsNumberAtom = Atom(
+    name: 'AppModelBase.galleryElementsNumber',
+    context: context,
+  );
 
   @override
   int get galleryElementsNumber {
@@ -77,14 +85,19 @@ mixin _$AppModel on AppModelBase, Store {
 
   @override
   set galleryElementsNumber(int value) {
-    _$galleryElementsNumberAtom.reportWrite(value, super.galleryElementsNumber,
-        () {
-      super.galleryElementsNumber = value;
-    });
+    _$galleryElementsNumberAtom.reportWrite(
+      value,
+      super.galleryElementsNumber,
+      () {
+        super.galleryElementsNumber = value;
+      },
+    );
   }
 
-  late final _$galleryInitializedAtom =
-      Atom(name: 'AppModelBase.galleryInitialized', context: context);
+  late final _$galleryInitializedAtom = Atom(
+    name: 'AppModelBase.galleryInitialized',
+    context: context,
+  );
 
   @override
   bool get galleryInitialized {
@@ -99,8 +112,10 @@ mixin _$AppModel on AppModelBase, Store {
     });
   }
 
-  late final _$appInitializedAtom =
-      Atom(name: 'AppModelBase.appInitialized', context: context);
+  late final _$appInitializedAtom = Atom(
+    name: 'AppModelBase.appInitialized',
+    context: context,
+  );
 
   @override
   bool get appInitialized {
@@ -115,8 +130,10 @@ mixin _$AppModel on AppModelBase, Store {
     });
   }
 
-  late final _$modelInitializedAtom =
-      Atom(name: 'AppModelBase.modelInitialized', context: context);
+  late final _$modelInitializedAtom = Atom(
+    name: 'AppModelBase.modelInitialized',
+    context: context,
+  );
 
   @override
   bool get modelInitialized {
@@ -131,21 +148,26 @@ mixin _$AppModel on AppModelBase, Store {
     });
   }
 
-  late final _$initializeAsyncAction =
-      AsyncAction('AppModelBase.initialize', context: context);
+  late final _$initializeAsyncAction = AsyncAction(
+    'AppModelBase.initialize',
+    context: context,
+  );
 
   @override
   Future<void> initialize() {
     return _$initializeAsyncAction.run(() => super.initialize());
   }
 
-  late final _$AppModelBaseActionController =
-      ActionController(name: 'AppModelBase', context: context);
+  late final _$AppModelBaseActionController = ActionController(
+    name: 'AppModelBase',
+    context: context,
+  );
 
   @override
   void showMoreGalleryElements() {
     final _$actionInfo = _$AppModelBaseActionController.startAction(
-        name: 'AppModelBase.showMoreGalleryElements');
+      name: 'AppModelBase.showMoreGalleryElements',
+    );
     try {
       return super.showMoreGalleryElements();
     } finally {
@@ -156,7 +178,8 @@ mixin _$AppModel on AppModelBase, Store {
   @override
   void addUserMedia(MediaModel item) {
     final _$actionInfo = _$AppModelBaseActionController.startAction(
-        name: 'AppModelBase.addUserMedia');
+      name: 'AppModelBase.addUserMedia',
+    );
     try {
       return super.addUserMedia(item);
     } finally {
@@ -167,7 +190,8 @@ mixin _$AppModel on AppModelBase, Store {
   @override
   void addGalleryMedia(MediaModel item) {
     final _$actionInfo = _$AppModelBaseActionController.startAction(
-        name: 'AppModelBase.addGalleryMedia');
+      name: 'AppModelBase.addGalleryMedia',
+    );
     try {
       return super.addGalleryMedia(item);
     } finally {
@@ -178,7 +202,8 @@ mixin _$AppModel on AppModelBase, Store {
   @override
   void removeUserMediaAt(int index) {
     final _$actionInfo = _$AppModelBaseActionController.startAction(
-        name: 'AppModelBase.removeUserMediaAt');
+      name: 'AppModelBase.removeUserMediaAt',
+    );
     try {
       return super.removeUserMediaAt(index);
     } finally {
@@ -189,7 +214,8 @@ mixin _$AppModel on AppModelBase, Store {
   @override
   void removeUserMediaWithPath(String path) {
     final _$actionInfo = _$AppModelBaseActionController.startAction(
-        name: 'AppModelBase.removeUserMediaWithPath');
+      name: 'AppModelBase.removeUserMediaWithPath',
+    );
     try {
       return super.removeUserMediaWithPath(path);
     } finally {
@@ -200,7 +226,8 @@ mixin _$AppModel on AppModelBase, Store {
   @override
   void replaceTags(List<Object?> tags) {
     final _$actionInfo = _$AppModelBaseActionController.startAction(
-        name: 'AppModelBase.replaceTags');
+      name: 'AppModelBase.replaceTags',
+    );
     try {
       return super.replaceTags(tags);
     } finally {

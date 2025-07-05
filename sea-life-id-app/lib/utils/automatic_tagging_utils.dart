@@ -21,7 +21,8 @@ class AutomaticTagging {
   }
 
   static Future<List<DetectedObject>> syncroDetectObjectOnImage(
-      String path) async {
+    String path,
+  ) async {
     List<DetectedObject> detectedObjects = await _detectObjectOnImage(path);
     return detectedObjects;
   }
@@ -43,7 +44,8 @@ class AutomaticTagging {
     ByteData data = await rootBundle.load("assets/$filename");
     final buffer = data.buffer;
     dstFile.writeAsBytesSync(
-        buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
+      buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+    );
   }
 
   static Future<Directory> getAppTmpPath() async {

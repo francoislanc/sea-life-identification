@@ -10,7 +10,7 @@ More info: https://pub.dev/packages/mobx_codegen#-readme-tab-
 
 ### To generate bundle
 ```
-flutter build appbundle --flavor "prod"
+flutter build appbundle
 ```
 More info: https://flutter.dev/docs/deployment/android
 

@@ -8,14 +8,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:underwater_video_tagging/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(
-    UnderwaterVideoTaggingApp(),
-  );
+  runApp(UnderwaterVideoTaggingApp());
 }
 
 class UnderwaterVideoTaggingApp extends StatelessWidget {
@@ -24,14 +24,14 @@ class UnderwaterVideoTaggingApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.lightBlue,
-          primaryTextTheme:
-              TextTheme(titleLarge: TextStyle(color: Colors.white))),
+        primaryColor: Colors.lightBlue,
+        primaryTextTheme: TextTheme(titleLarge: TextStyle(color: Colors.white)),
+      ),
       home: MainPage(),
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [const Locale('en', 'US'), const Locale('fr', 'FR')],
       localeResolutionCallback: (locale, supportedLocales) {
@@ -74,32 +74,36 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   void _handleTabs(int tabIndex) {
-    _tabController.animateTo(tabIndex,
-        duration: const Duration(milliseconds: 300));
+    _tabController.animateTo(
+      tabIndex,
+      duration: const Duration(milliseconds: 300),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            automaticallyImplyLeading: false,
-            systemOverlayStyle: SystemUiOverlayStyle.light,
-            backgroundColor: Colors.lightBlue,
-            elevation: 0,
-            titleSpacing: 0,
-            flexibleSpace: MyAppBar(
-              tabController: _tabController,
-              tabHandler: _handleTabs,
-            )),
-        body: Container(
-          child: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
-            controller: _tabController,
-            children: [
-              Identify(appStore: widget.appStore),
-              Discover(appStore: widget.appStore),
-            ],
-          ),
-        ));
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        backgroundColor: Colors.lightBlue,
+        elevation: 0,
+        titleSpacing: 0,
+        flexibleSpace: MyAppBar(
+          tabController: _tabController,
+          tabHandler: _handleTabs,
+        ),
+      ),
+      body: Container(
+        child: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _tabController,
+          children: [
+            Identify(appStore: widget.appStore),
+            Discover(appStore: widget.appStore),
+          ],
+        ),
+      ),
+    );
   }
 }

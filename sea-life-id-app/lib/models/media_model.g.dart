@@ -12,13 +12,15 @@ mixin _$MediaModel on MediaModelBase, Store {
   Computed<List<ItemTags>>? _$uiTagsComputed;
 
   @override
-  List<ItemTags> get uiTags =>
-      (_$uiTagsComputed ??= Computed<List<ItemTags>>(() => super.uiTags,
-              name: 'MediaModelBase.uiTags'))
-          .value;
+  List<ItemTags> get uiTags => (_$uiTagsComputed ??= Computed<List<ItemTags>>(
+    () => super.uiTags,
+    name: 'MediaModelBase.uiTags',
+  )).value;
 
-  late final _$thumbnailAtom =
-      Atom(name: 'MediaModelBase.thumbnail', context: context);
+  late final _$thumbnailAtom = Atom(
+    name: 'MediaModelBase.thumbnail',
+    context: context,
+  );
 
   @override
   Uint8List? get thumbnail {
@@ -48,8 +50,10 @@ mixin _$MediaModel on MediaModelBase, Store {
     });
   }
 
-  late final _$hasBeenProcessedAtom =
-      Atom(name: 'MediaModelBase.hasBeenProcessed', context: context);
+  late final _$hasBeenProcessedAtom = Atom(
+    name: 'MediaModelBase.hasBeenProcessed',
+    context: context,
+  );
 
   @override
   bool get hasBeenProcessed {
@@ -64,8 +68,10 @@ mixin _$MediaModel on MediaModelBase, Store {
     });
   }
 
-  late final _$inProcessingAtom =
-      Atom(name: 'MediaModelBase.inProcessing', context: context);
+  late final _$inProcessingAtom = Atom(
+    name: 'MediaModelBase.inProcessing',
+    context: context,
+  );
 
   @override
   bool get inProcessing {
@@ -80,8 +86,10 @@ mixin _$MediaModel on MediaModelBase, Store {
     });
   }
 
-  late final _$processingProgressAtom =
-      Atom(name: 'MediaModelBase.processingProgress', context: context);
+  late final _$processingProgressAtom = Atom(
+    name: 'MediaModelBase.processingProgress',
+    context: context,
+  );
 
   @override
   int get processingProgress {
@@ -96,8 +104,10 @@ mixin _$MediaModel on MediaModelBase, Store {
     });
   }
 
-  late final _$extractingImagesAtom =
-      Atom(name: 'MediaModelBase.extractingImages', context: context);
+  late final _$extractingImagesAtom = Atom(
+    name: 'MediaModelBase.extractingImages',
+    context: context,
+  );
 
   @override
   bool get extractingImages {
@@ -112,21 +122,26 @@ mixin _$MediaModel on MediaModelBase, Store {
     });
   }
 
-  late final _$createThumbnailAsyncAction =
-      AsyncAction('MediaModelBase.createThumbnail', context: context);
+  late final _$createThumbnailAsyncAction = AsyncAction(
+    'MediaModelBase.createThumbnail',
+    context: context,
+  );
 
   @override
   Future<void> createThumbnail() {
     return _$createThumbnailAsyncAction.run(() => super.createThumbnail());
   }
 
-  late final _$MediaModelBaseActionController =
-      ActionController(name: 'MediaModelBase', context: context);
+  late final _$MediaModelBaseActionController = ActionController(
+    name: 'MediaModelBase',
+    context: context,
+  );
 
   @override
   void addTag(String tag) {
     final _$actionInfo = _$MediaModelBaseActionController.startAction(
-        name: 'MediaModelBase.addTag');
+      name: 'MediaModelBase.addTag',
+    );
     try {
       return super.addTag(tag);
     } finally {
@@ -137,7 +152,8 @@ mixin _$MediaModel on MediaModelBase, Store {
   @override
   void removeTagAt(int index) {
     final _$actionInfo = _$MediaModelBaseActionController.startAction(
-        name: 'MediaModelBase.removeTagAt');
+      name: 'MediaModelBase.removeTagAt',
+    );
     try {
       return super.removeTagAt(index);
     } finally {
@@ -148,7 +164,8 @@ mixin _$MediaModel on MediaModelBase, Store {
   @override
   void setHasBeenProcessed(bool v) {
     final _$actionInfo = _$MediaModelBaseActionController.startAction(
-        name: 'MediaModelBase.setHasBeenProcessed');
+      name: 'MediaModelBase.setHasBeenProcessed',
+    );
     try {
       return super.setHasBeenProcessed(v);
     } finally {
@@ -159,7 +176,8 @@ mixin _$MediaModel on MediaModelBase, Store {
   @override
   void setInProcessing(bool v) {
     final _$actionInfo = _$MediaModelBaseActionController.startAction(
-        name: 'MediaModelBase.setInProcessing');
+      name: 'MediaModelBase.setInProcessing',
+    );
     try {
       return super.setInProcessing(v);
     } finally {
@@ -170,7 +188,8 @@ mixin _$MediaModel on MediaModelBase, Store {
   @override
   void setProcessingProgress(int v) {
     final _$actionInfo = _$MediaModelBaseActionController.startAction(
-        name: 'MediaModelBase.setProcessingProgress');
+      name: 'MediaModelBase.setProcessingProgress',
+    );
     try {
       return super.setProcessingProgress(v);
     } finally {
@@ -181,7 +200,8 @@ mixin _$MediaModel on MediaModelBase, Store {
   @override
   void setExtractingImages(bool v) {
     final _$actionInfo = _$MediaModelBaseActionController.startAction(
-        name: 'MediaModelBase.setExtractingImages');
+      name: 'MediaModelBase.setExtractingImages',
+    );
     try {
       return super.setExtractingImages(v);
     } finally {

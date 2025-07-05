@@ -1,11 +1,11 @@
-import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
-import 'package:ffmpeg_kit_flutter/ffmpeg_session.dart';
-import 'package:ffmpeg_kit_flutter/ffprobe_kit.dart';
-import 'package:ffmpeg_kit_flutter/media_information.dart';
-import 'package:ffmpeg_kit_flutter/media_information_session.dart';
-import 'package:ffmpeg_kit_flutter/return_code.dart';
-import 'package:ffmpeg_kit_flutter/session_state.dart';
-import 'package:ffmpeg_kit_flutter/statistics.dart';
+import 'package:ffmpeg_kit_flutter_new/ffmpeg_kit.dart';
+import 'package:ffmpeg_kit_flutter_new/ffmpeg_session.dart';
+import 'package:ffmpeg_kit_flutter_new/ffprobe_kit.dart';
+import 'package:ffmpeg_kit_flutter_new/media_information.dart';
+import 'package:ffmpeg_kit_flutter_new/media_information_session.dart';
+import 'package:ffmpeg_kit_flutter_new/return_code.dart';
+import 'package:ffmpeg_kit_flutter_new/session_state.dart';
+import 'package:ffmpeg_kit_flutter_new/statistics.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -37,7 +37,7 @@ class VideoUtils {
         await Future.delayed(Duration(milliseconds: 100));
         double progress =
             (lastStatistic.getTime() / (media.mediaInfo!.duration * 1000.0)) *
-                50;
+            50;
         media.setProcessingProgress(progress.round());
       }
     }
@@ -60,8 +60,9 @@ class VideoUtils {
   }
 
   static Future<VideoInfo?> getMediaInformation(String path) async {
-    MediaInformationSession session =
-        await FFprobeKit.getMediaInformation(path);
+    MediaInformationSession session = await FFprobeKit.getMediaInformation(
+      path,
+    );
     MediaInformation? mapInfo = session.getMediaInformation();
     if (mapInfo != null) {
       double duration = double.parse(mapInfo.getDuration()!);
@@ -83,14 +84,19 @@ class VideoUtils {
   static Future<File> copyFileAssets(String assetName, String localName) async {
     final ByteData assetByteData = await rootBundle.load(assetName);
 
-    final List<int> byteList = assetByteData.buffer
-        .asUint8List(assetByteData.offsetInBytes, assetByteData.lengthInBytes);
+    final List<int> byteList = assetByteData.buffer.asUint8List(
+      assetByteData.offsetInBytes,
+      assetByteData.lengthInBytes,
+    );
 
-    final String fullTemporaryPath =
-        join((await tempDirectory).path, localName);
+    final String fullTemporaryPath = join(
+      (await tempDirectory).path,
+      localName,
+    );
 
-    return new File(fullTemporaryPath)
-        .writeAsBytes(byteList, mode: FileMode.writeOnly, flush: true);
+    return new File(
+      fullTemporaryPath,
+    ).writeAsBytes(byteList, mode: FileMode.writeOnly, flush: true);
   }
 
   static Future<String> assetPath(String assetName) async {

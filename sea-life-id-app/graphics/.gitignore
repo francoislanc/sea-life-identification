@@ -1,0 +1,5 @@
+*.svg
+*.png
+!icon/ic_background.png
+!icon/ic_foreground.png
+!icon/ic_launcher_xxxhdpi.png

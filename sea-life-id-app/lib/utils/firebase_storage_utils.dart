@@ -12,12 +12,17 @@ class FirebaseStorageUtils {
   static final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
   static Future<bool> uploadMedia(
-      String folder, String indice, File f, String comment) async {
+    String folder,
+    String indice,
+    File f,
+    String comment,
+  ) async {
     var uuid = Uuid();
     var id = uuid.v1().toString();
 
-    Reference firebaseStorageFileRef =
-        _firebaseStorage.ref().child("$folder/${id}_$indice");
+    Reference firebaseStorageFileRef = _firebaseStorage.ref().child(
+      "$folder/${id}_$indice",
+    );
     UploadTask uploadTask = firebaseStorageFileRef.putFile(f);
     await Future.value(uploadTask);
 
@@ -28,12 +33,16 @@ class FirebaseStorageUtils {
       File commentFile = File("$mediaProcessingFolder/${id}_comment.txt");
       commentFile.writeAsStringSync(comment);
 
-      SettableMetadata metadata =
-          new SettableMetadata(contentType: "text/plain");
-      Reference firebaseStorageCommentFileRef =
-          _firebaseStorage.ref().child("$folder/${id}_${indice}_comment.txt");
-      UploadTask uploadTask =
-          firebaseStorageCommentFileRef.putFile(commentFile, metadata);
+      SettableMetadata metadata = new SettableMetadata(
+        contentType: "text/plain",
+      );
+      Reference firebaseStorageCommentFileRef = _firebaseStorage.ref().child(
+        "$folder/${id}_${indice}_comment.txt",
+      );
+      UploadTask uploadTask = firebaseStorageCommentFileRef.putFile(
+        commentFile,
+        metadata,
+      );
       await Future.value(uploadTask);
     }
     return true;
@@ -47,8 +56,9 @@ class FirebaseStorageUtils {
 
   static Future<bool> hasLatestModel() async {
     bool hasLatestModel = false;
-    FullMetadata metadata =
-        await _firebaseStorage.ref('models/model-3.tflite').getMetadata();
+    FullMetadata metadata = await _firebaseStorage
+        .ref('models/model-4.tflite')
+        .getMetadata();
     String? firebaseMd5Value = metadata.md5Hash;
     Directory appDocDir = await getApplicationDocumentsDirectory();
     File modelFile = File('${appDocDir.path}/model.tflite');
@@ -65,11 +75,11 @@ class FirebaseStorageUtils {
     Directory appDocDir = await getApplicationDocumentsDirectory();
     File downloadToModelFile = File('${appDocDir.path}/model.tflite');
     await _firebaseStorage
-        .ref('models/model-3.tflite')
+        .ref('models/model-4.tflite')
         .writeToFile(downloadToModelFile);
     File downloadToModelDicFile = File('${appDocDir.path}/model.txt');
     await _firebaseStorage
-        .ref('models/model-3.txt')
+        .ref('models/model-4.txt')
         .writeToFile(downloadToModelDicFile);
   }
 

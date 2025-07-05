@@ -14,16 +14,35 @@ class UploadMediaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-        onPressed: () {
-          processPicker(app, FileType.media);
-        },
-        heroTag: 'uploadBtn',
-        child: Icon(Icons.image));
+      onPressed: () {
+        processPicker(app, FileType.custom);
+      },
+      heroTag: 'uploadBtn',
+      child: Icon(Icons.image),
+    );
   }
 
   Future processPicker(AppModel app, FileType fileType) async {
-    FilePickerResult? results = await FilePicker.platform
-        .pickFiles(type: fileType, allowMultiple: true);
+    FilePickerResult? results = await FilePicker.platform.pickFiles(
+      type: fileType,
+      allowedExtensions: [
+        "avi",
+        "flv",
+        "m4v",
+        "mkv",
+        "mov",
+        "mp4",
+        "mpeg",
+        "webm",
+        "wmv",
+        "bmp",
+        "gif",
+        "jpeg",
+        "jpg",
+        "png",
+      ],
+      allowMultiple: true,
+    );
     if (results == null) return;
 
     for (PlatformFile pf in results.files) {
@@ -42,11 +61,12 @@ class UploadMediaWidget extends StatelessWidget {
 
           if (fileType != null) {
             MediaModel media = MediaModel(
-                fileType: fileType,
-                fileName: pf.name,
-                path: filePath,
-                isLocal: true,
-                isDbSample: false);
+              fileType: fileType,
+              fileName: pf.name,
+              path: filePath,
+              isLocal: true,
+              isDbSample: false,
+            );
             app.addUserMedia(media);
           }
         }
