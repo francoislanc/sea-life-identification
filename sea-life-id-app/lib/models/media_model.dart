@@ -15,12 +15,13 @@ part 'media_model.g.dart';
 class MediaModel = MediaModelBase with _$MediaModel;
 
 abstract class MediaModelBase with Store {
-  MediaModelBase(
-      {required this.fileType,
-      required this.fileName,
-      required this.path,
-      required this.isLocal,
-      required this.isDbSample});
+  MediaModelBase({
+    required this.fileType,
+    required this.fileName,
+    required this.path,
+    required this.isLocal,
+    required this.isDbSample,
+  });
 
   final FileType fileType;
   final String fileName;
@@ -86,11 +87,12 @@ abstract class MediaModelBase with Store {
     if (this.fileType == FileType.video) {
       try {
         Uint8List? bytes = await VideoThumbnail.thumbnailData(
-            video: this.path,
-            imageFormat: ImageFormat.WEBP,
-            maxWidth: 600,
-            timeMs: 0,
-            quality: 50);
+          video: this.path,
+          imageFormat: ImageFormat.WEBP,
+          maxWidth: 600,
+          timeMs: 0,
+          quality: 50,
+        );
         thumbnail = bytes;
       } catch (error) {}
     }
@@ -107,24 +109,28 @@ abstract class MediaModelBase with Store {
     int rc = -1;
     int minimunOccurence = 1;
     if (fileType == FileType.image) {
-      rc = await VideoUtils.executeCmd(VideoUtils.processAndCopyImage(
-          path, "$mediaProcessingFolder/${uuid.v1()}.jpg"));
+      rc = await VideoUtils.executeCmd(
+        VideoUtils.processAndCopyImage(
+          path,
+          "$mediaProcessingFolder/${uuid.v1()}.jpg",
+        ),
+      );
     } else if (fileType == FileType.video) {
       //setExtractingImages(true);
 
       mediaInfo = await VideoUtils.getMediaInformation(path);
       minimunOccurence = 3;
       rc = await VideoUtils.execute(
-          VideoUtils.generateImagesFromVideo(path, mediaProcessingFolder),
-          this);
+        VideoUtils.generateImagesFromVideo(path, mediaProcessingFolder),
+        this,
+      );
       //setExtractingImages(false);
     }
 
     if (rc == 0) {
-      List<FileSystemEntity> fileSystemEntities =
-          await Directory(mediaProcessingFolder)
-              .list(recursive: true, followLinks: false)
-              .toList();
+      List<FileSystemEntity> fileSystemEntities = await Directory(
+        mediaProcessingFolder,
+      ).list(recursive: true, followLinks: false).toList();
 
       int numFiles = fileSystemEntities.length;
 
@@ -135,7 +141,7 @@ abstract class MediaModelBase with Store {
       for (FileSystemEntity f in fileSystemEntities) {
         List<DetectedObject> detectedObjectsOnImage =
             await AutomaticTagging.syncroDetectObjectOnImage(f.path);
-        await Future.delayed(Duration(milliseconds: 100));
+        // await Future.delayed(Duration(milliseconds: 100));
 
         for (DetectedObject o in detectedObjectsOnImage) {
           if (!detectedObjects.containsKey(o.detectedClass)) {
